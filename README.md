@@ -70,20 +70,20 @@ Each phase loads its corresponding skill file and reads the previous phase outpu
 
 ```
 my-app/
-??? src/                          # Source code
-??? tests/                        # Tests
-??? docs/adr/                     # Architecture Decision Records
-??? work/                         # Generated artifacts (gitignored)
-?   ??? tasks/                    # Task cards
-?   ??? reviews/                  # Review reports
-?   ??? prd.md                    # Product Requirement Document
-?   ??? architecture.md           # System design
-?   ??? module-interface-spec.md  # Module contracts
-?   ??? integration-report.md     # Integration results
-?   ??? test-report.md            # Test results
-??? project.json                  # Phase and state tracker
-??? AGENTS.md                     # Orchestration instructions
-??? README.md
+-- src/                          # Source code
+-- tests/                        # Tests
+-- docs/adr/                     # Architecture Decision Records
+-- work/                         # Generated artifacts (gitignored)
+   -- tasks/                    # Task cards
+   -- reviews/                  # Review reports
+   -- prd.md                    # Product Requirement Document
+   -- architecture.md           # System design
+   -- module-interface-spec.md  # Module contracts
+   -- integration-report.md     # Integration results
+   -- test-report.md            # Test results
+-- project.json                  # Phase and state tracker
+-- AGENTS.md                     # Orchestration instructions
+-- README.md
 ```
 
 ## Platform Support
@@ -99,16 +99,16 @@ PowerShell scripts also run on Linux via `pwsh` (PowerShell Core).
 
 ```
 ext_swdev/
-??? plugins/dev-agent-team/       # Plugin source
-?   ??? .codex-plugin/plugin.json # Plugin manifest
-?   ??? skills/                   # 7 role skill files
-?   ??? schemas/                  # 7 artifact templates
-?   ??? scripts/                  # Init and phase scripts (both shells)
-?   ??? templates/project/        # New project scaffold
-?   ??? docs/team-workflow.md     # Full workflow documentation
-??? .agents/plugins/marketplace.json  # Codex marketplace manifest
-??? AGENTS.md                     # Repository agent instructions
-??? .gitignore
+|-- plugins/dev-agent-team/       # Plugin source
+|   |-- .codex-plugin/plugin.json # Plugin manifest
+|   |-- skills/                   # 7 role skill files
+|   |-- schemas/                  # 7 artifact templates
+|   |-- scripts/                  # Init and phase scripts (both shells)
+|   |-- templates/project/        # New project scaffold
+|   |-- docs/team-workflow.md     # Full workflow documentation
+|-- .agents/plugins/marketplace.json  # Codex marketplace manifest
+|-- AGENTS.md                     # Repository agent instructions
+|-- .gitignore
 ```
 
 ## Development

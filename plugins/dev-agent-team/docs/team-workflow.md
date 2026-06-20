@@ -76,12 +76,21 @@ User Request
 | Tester | Core module coverage > 80%; all P0 E2E tests pass |
 ## MVP Checkpoint
 
-After the Developer phase completes all tasks (MVP ready), the agent **must not automatically advance** to the next phase. Instead, it prompts the user with two options:
+After the Developer phase completes all tasks (MVP ready), the agent **automatically** performs a project review:
 
-1. **Demo/Interact first** — Run the project to verify the results, make adjustments, then proceed.
-2. **Continue directly** — Advance through review → integration → testing in one pass.
+### Auto-Review Flow
 
-This gives the user visibility and control before committing to subsequent phases. The agent waits for user input before calling scripts/next-phase.ps1.
+1. **Project Review** — The agent runs a full project review using `schemas/project-review.md`, covering code quality, UX/UI, functionality, and security. Output goes to `work/project-review.md`.
+
+2. **Auto-Fix Critical/High** — All Critical and High severity issues found in the review are **automatically fixed** without user confirmation. Each fix is verified by running build + tests. If a fix fails, it is rolled back and logged as `fix-failed` with the reason.
+
+3. **User Choice on Remaining** — After Critical/High issues are resolved, the agent presents the remaining Medium/Low issues to the user and offers three options:
+   - **Continue** — Advance through review → integration → testing. Remaining issues are deferred to later iterations.
+   - **Select & Fix** — User specifies issue numbers to fix before continuing.
+   - **Demo/Interact** — Run the project first, then return to the choice.
+
+### Rationale
+This replaces the old "Demo or Continue" prompt. The auto-review ensures no Critical or High issues ship, while giving the user full control over the remaining backlog.
 
 
 ## Filesystem Layout

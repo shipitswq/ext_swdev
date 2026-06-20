@@ -54,7 +54,7 @@ Write-Host "Input artifacts:"
 switch ($nextPhase) {
     "architect" { Write-Host "  - Read: work/prd.md, work/user-stories.md" }
     "task-manager" { Write-Host "  - Read: work/architecture.md, work/module-interface-spec.md" }
-    "developer" { Write-Host "  - Read: work/tasks/task-*.md, work/module-interface-spec.md" }
+    "developer" { Write-Host "  - Read: work/tasks/task-*.md, work/module-interface-spec.md"; Write-Host "  - Prior step: auto project-review + auto-fix critical/high issues" }
     "reviewer" { Write-Host "  - Read: work/tasks/task-*.md, dev-task-* branches" }
     "integration-manager" { Write-Host "  - Read: work/tasks/ (done tasks), work/reviews/" }
     "tester" { Write-Host "  - Read: main branch code, work/prd.md" }

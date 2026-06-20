@@ -59,6 +59,16 @@ Substitute `make`, `poetry run`, or `uv run` as appropriate for the project lang
 - Follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(scope): message`. Types: `feat`, `fix`, `chore`, `refactor`, `docs`, `test`, `style`.
 - Keep commits atomic. PRs must describe the change and why, link the related issue, include screenshots for UI changes, and pass CI.
 
+
+## Auto Project Review
+
+After the Developer phase completes all tasks (MVP ready), the agent **automatically** runs a project review:
+
+1. **Auto project review** — Uses `schemas/project-review.md` template, output to `work/project-review.md`
+2. **Auto-fix Critical/High** — All Critical and High severity issues are automatically fixed, verified by build + tests
+3. **User choice** — Remaining Medium/Low issues are listed for the user to choose how to proceed (continue, fix selected, or demo first)
+
+See plugins/dev-agent-team/docs/team-workflow.md for details.
 ## Agent-Specific Instructions
 
 - Prefer the repository's established patterns over new frameworks.

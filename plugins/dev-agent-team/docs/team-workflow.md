@@ -74,6 +74,15 @@ User Request
 | Reviewer | Report has concrete findings, not just "looks good" |
 | Integration Manager | main branch builds and passes all tests |
 | Tester | Core module coverage > 80%; all P0 E2E tests pass |
+## MVP Checkpoint
+
+After the Developer phase completes all tasks (MVP ready), the agent **must not automatically advance** to the next phase. Instead, it prompts the user with two options:
+
+1. **Demo/Interact first** — Run the project to verify the results, make adjustments, then proceed.
+2. **Continue directly** — Advance through review → integration → testing in one pass.
+
+This gives the user visibility and control before committing to subsequent phases. The agent waits for user input before calling scripts/next-phase.ps1.
+
 
 ## Filesystem Layout
 

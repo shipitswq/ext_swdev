@@ -8,7 +8,7 @@
       "name": "dev-agent-team",
       "source": {
         "source": "local",
-        "path": "."
+        "path": "./plugins/dev-agent-team"
       },
       "policy": {
         "installation": "AVAILABLE",

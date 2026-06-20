@@ -1,0 +1,18 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "phase": "pm",
+  "artifacts": {
+    "prd": "work/prd.md",
+    "user-stories": "work/user-stories.md",
+    "architecture": "work/architecture.md",
+    "module-interface-spec": "work/module-interface-spec.md",
+    "tasks": "work/tasks/",
+    "reviews": "work/reviews/",
+    "test-report": "work/test-report.md",
+    "integration-report": "work/integration-report.md"
+  },
+  "state": {},
+  "created_at": "",
+  "updated_at": ""
+}

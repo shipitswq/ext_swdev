@@ -1,0 +1,22 @@
+{
+  "name": "dev-agent-team",
+  "version": "1.0.0",
+  "description": "Multi-agent software development team orchestration",
+  "interface": {
+    "displayName": "Dev Agent Team",
+    "shortDescription": "Multi-agent SDLC team orchestration",
+    "longDescription": "A complete multi-agent software development team for Codex, with roles for PM, Architect, Task Manager, Developer, Reviewer, Integration Manager, and Tester. Supports parallel development with task decomposition and branch-based workflows.",
+    "developerName": "ext_swdev",
+    "category": "Productivity",
+    "defaultPrompt": "Set up a new project with the agent team: run init-project.ps1 and start the PM phase.",
+    "capabilities": [
+      "multi-agent orchestration",
+      "software development lifecycle",
+      "parallel task execution"
+    ]
+  },
+  "author": {
+    "name": "ext_swdev team"
+  },
+  "license": "MIT"
+}

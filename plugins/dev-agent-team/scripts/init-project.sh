@@ -1,19 +1,28 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 set -euo pipefail
 
 PROJECT_NAME=""
 TARGET_DIR="$(pwd)"
+TECH_STACK=""
+
+usage() {
+  echo "Usage: $0 -n|--name <name> [-d|--dir <target-dir>] [-t|--tech-stack <stack>]"
+  echo ""
+  echo "Tech stacks: node-ts, node-js, python, rust, go"
+  exit 1
+}
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -n|--name) PROJECT_NAME="$2"; shift 2 ;;
     -d|--dir) TARGET_DIR="$2"; shift 2 ;;
-    *) echo "Usage: $0 -n|--name <name> [-d|--dir <target-dir>]"; exit 1 ;;
+    -t|--tech-stack) TECH_STACK="$2"; shift 2 ;;
+    *) usage ;;
   esac
 done
 
 if [ -z "$PROJECT_NAME" ]; then
-  echo "Error: --name is required"; exit 1
+  echo "Error: --name is required"; usage
 fi
 
 TARGET_PATH="$TARGET_DIR/$PROJECT_NAME"
@@ -54,9 +63,21 @@ fi
 README="$TARGET_PATH/README.md"
 sed -i "s/{project-name}/$PROJECT_NAME/g" "$README"
 sed -i "s/{description}/TODO: Add project description/g" "$README"
-sed -i "s/{tech stack}/TODO: Define tech stack/g" "$README"
-sed -i "s/{install command}/TODO: Add install command/g" "$README"
-sed -i "s/{dev command}/TODO: Add dev command/g" "$README"
+
+# Scaffold build config if tech stack provided
+if [ -n "$TECH_STACK" ]; then
+  SCAFFOLD_SCRIPT="$SCRIPT_DIR/scaffold-build-config.sh"
+  if [ -f "$SCAFFOLD_SCRIPT" ]; then
+    echo "Scaffolding build configuration for: $TECH_STACK"
+    bash "$SCAFFOLD_SCRIPT" -d "$TARGET_PATH" -t "$TECH_STACK" -n "$PROJECT_NAME" -f
+    echo ""
+  else
+    echo "Warning: scaffold-build-config.sh not found at $SCAFFOLD_SCRIPT"
+    echo "Run the following later:"
+    echo "  pwsh scripts/scaffold-build-config.ps1 -ProjectDir $TARGET_PATH -TechStack $TECH_STACK -Force"
+    echo ""
+  fi
+fi
 
 cd "$TARGET_PATH"
 git init
